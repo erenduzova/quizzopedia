@@ -1,0 +1,2 @@
+# quizzopedia
+Quizz Game
