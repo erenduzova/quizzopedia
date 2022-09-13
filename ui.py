@@ -1,4 +1,5 @@
 from tkinter import *
+from quiz_brain import QuizBrain
 
 BACKGROUND_COLOR = "#375362"
 QUESTION_FONT = ("Arial", 20, "italic")
@@ -6,7 +7,9 @@ QUESTION_FONT = ("Arial", 20, "italic")
 
 class QuizzInterface:
 
-    def __init__(self):
+    def __init__(self, quiz_brain: QuizBrain):
+        self.quiz = quiz_brain
+
         self.window = Tk()
         self.window.title("Quizzopedia")
         self.window.config(padx=20, pady=20, background=BACKGROUND_COLOR)
@@ -18,6 +21,7 @@ class QuizzInterface:
         # Canvas for question
         self.canvas = Canvas(master=self.window, width=300, height=250, highlightthickness=0)
         self.question_text = self.canvas.create_text(150, 125,
+                                                     width=280,
                                                      text="Question text",
                                                      fill=BACKGROUND_COLOR,
                                                      font=QUESTION_FONT)
@@ -33,4 +37,10 @@ class QuizzInterface:
         self.false_button = Button(master=self.window, image=false_image, highlightthickness=0)
         self.false_button.grid(row=3, column=1)
 
+        self.get_next_question()
+
         self.window.mainloop()
+
+    def get_next_question(self):
+        q_text = self.quiz.next_question()
+        self.canvas.itemconfigure(self.question_text, text=q_text)

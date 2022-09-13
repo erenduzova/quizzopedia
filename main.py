@@ -1,6 +1,7 @@
 from data import question_data
 from ui import QuizzInterface
 from question_model import Question
+from quiz_brain import QuizBrain
 
 
 def create_question_bank(data):
@@ -15,4 +16,6 @@ def create_question_bank(data):
 
 question_bank = create_question_bank(data=question_data)
 
-quiz_ui = QuizzInterface()
+quiz = QuizBrain(question_bank)
+
+quiz_ui = QuizzInterface(quiz)
