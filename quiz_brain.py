@@ -18,3 +18,6 @@ class QuizBrain:
             return True
         else:
             return False
+
+    def still_has_questions(self):
+        return self.question_number < len(self.questions_list)
