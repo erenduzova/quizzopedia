@@ -44,12 +44,14 @@ class QuizzInterface:
         self.window.mainloop()
 
     def get_next_question(self):
+        self.canvas.configure(bg="white")
         if self.quiz.still_has_questions():
             q_text = self.quiz.next_question()
             self.canvas.itemconfigure(self.question_text, text=q_text)
-            self.canvas.configure(bg="white")
         else:
             self.canvas.itemconfigure(self.question_text, text="Quiz finished.")
+            self.true_button.config(state="disabled")
+            self.false_button.config(state="disabled")
 
     def true_pressed(self):
         is_right = self.quiz.check_answer(u_answer="True")
