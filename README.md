@@ -9,7 +9,7 @@ Simple quiz game created with Python.
 ## General info
 This project is a simple quiz game.<br />
 tkinter package used for ui.<br />
-Questions retrieved from Open Trivia Database API.<br />
+Questions retrieved from Open Trivia Database with API.<br />
 
 ## Built with
 Project is created with:
